@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang='en' class=''>
+<html lang='en'>
 
 <head>
   <meta charset='UTF-8'>
   <title>Derk</title>
+
   <meta name="robots" content="noindex">
   <link rel="shortcut icon" type="image/x-icon" href="https://u.cubeupload.com/derk/chatbubblemessagecon.png">
   <link rel="mask-icon" href="https://u.cubeupload.com/derk/chatbubblemessagecon.png" color="#111">
 
-  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="sara mazal lessons">
   <meta name="keywords" content="HTML, CSS, JavaScript, mazal, icons">
@@ -30,6 +30,7 @@
 
     body {
       font-family: "ROBOTO", sans-serif;
+      background-color: #1e1f26;
     }
 
     .nav {
@@ -38,21 +39,16 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-      position: relative;
-      background-color: #1e1f26;
       text-align: center;
-      padding: 0 2em;
     }
 
     .nav h1 {
       font-family: "Josefin Sans", sans-serif;
       font-size: 5vw;
       margin: 0;
-      padding-bottom: 0.5rem;
       letter-spacing: 0.5rem;
       color: #708dad;
       transition: all 0.3s ease;
-      z-index: 3;
     }
 
     .nav h1:hover {
@@ -60,13 +56,12 @@
       color: #ff0266;
     }
 
-    .nav h3.span {
+    .nav h3 {
       font-size: 2vw;
       letter-spacing: 0.7em;
       font-family: "ROBOTO", sans-serif;
       font-weight: 300;
       color: #faebd7;
-      z-index: 4;
     }
 
     .nav h3 span:hover {
@@ -78,27 +73,36 @@
     a {
       text-decoration: none;
     }
+
+    @media (min-width: 800px) {
+      .nav h1 {
+        font-size: 5vw;
+      }
+
+      .nav h3 {
+        font-size: 3vw;
+      }
+    }
+
+    @media (min-width: 360px) {
+      .nav h1 {
+        font-size: 8vw;
+      }
+
+      .nav h3 {
+        font-size: 2vw;
+        letter-spacing: 0.2vw;
+      }
+    }
   </style>
+
 </head>
 
 <body>
   <div id="particles-js"></div>
   <section class="nav">
     <h1>Derk</h1>
-    <h3 class="span loader">
-      <span class="m">(155155)</span>
-      <span class="m"></span>
-      <span class="m"></span>
-      <span class="m"></span>
-      <span class="m"></span>
-      <span class="m"></span>
-      <span class="m"></span>
-      <span class="m"></span>
-      <span class="m"></span>
-      <span class="m"></span>
-      <span class="m"></span>
-      <span class="m"></span>
-    </h3>
+    <h3 class="span loader"><span class="m">(155155)</span></h3>
   </section>
 </body>
 
