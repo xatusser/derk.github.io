@@ -6,67 +6,60 @@
     <title>Derk</title> <!-- Título de la página -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
     <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #000001; /* Color de fondo */
-        }
+        @import url('https://fonts.googleapis.com/css?family=Cairo');
+body {
+  background-color: #010;
+}
 
-        .container {
-            text-align: center;
-        }
+.title {
+  font-family: "Cairo";
+  text-align: center;
+  color: #FFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  letter-spacing: 1px;
+  line-height:2
+}
 
-        .text {
-            font-family: 'Roboto', sans-serif;
-            font-size: 100px; /* Tamaño de la letra */
-            position: relative;
-            color: transparent; /* Color de la letra (transparente para mostrar el fondo) */
-            overflow: hidden; /* Oculta el contenido que desborda */
-            text-shadow: 0 0 20px rgba(0, 0, 255, 0.7); /* Sombra azul para "Derk" */
-        }
+h1 {
+  background-image: url(https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExaDdmejlvcnFkdm94OW9xbDd5ZXVuMnFrNzYxZmNyYjJqdzg2MXhqOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3bc8pP1rVdfgN1uoMV/giphy.gif);
+  background-size: cover;
+  color: transparent;
+  -moz-background-clip: text;
+  -webkit-background-clip: text;
+  text-transform: uppercase;
+  font-size: 120px;
+  margin: 10px 0;
+}
+/* styling my button */
 
-        .text::before {
-            content: "Derk";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('c.jpg') no-repeat center; /* Asegúrate de que esta URL sea correcta */
-            background-size: cover;
-            animation: scroll 10s linear infinite; /* Animación de scroll horizontal */
-            -webkit-background-clip: text; /* Clipping del fondo */
-            background-clip: text; /* Clipping del fondo */
-            color: transparent; /* Color de la letra en la imagen */
-        }
+.white-mode {
+  text-decoration: none;
+  padding: 7px 10px;
+  background-color: #122;
+  border-radius: 3px;
+  color: #FFF;
+  transition: .35s ease-in-out;
+  position: absolute;
+  left: 15px;
+  bottom: 15px;
+  font-family: "Montserrat";
+}
 
-        @keyframes scroll {
-            0% { background-position: 0 0; }
-            100% { background-position: 100% 0; } /* Desplazamiento horizontal */
-        }
-
-        @keyframes shadowMove {
-            0% { text-shadow: 0 0 20px rgba(0, 255, 255, 0.5); }
-            100% { text-shadow: 0 0 40px rgba(0, 0, 255, 1); }
-        }
-
-        .number {
-            font-family: 'Roboto', sans-serif;
-            font-size: 50px; /* Tamaño del número */
-            margin-top: 20px; /* Espacio entre "Derk" y el número */
-            color: #919191; /* Color del número */
-            text-shadow: 0 0 20px rgba(0, 0, 255, 0.7); /* Sombra azul para el número */
-            animation: shadowMove 2s infinite alternate; /* Efecto de sombra en el número */
-        }
+.white-mode:hover {
+  background-color: #FFF;
+  color: #122;
+}
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="text"></div> <!-- Aquí se genera el texto "Derk" -->
-        <div class="number">155155</div>
+    <div class="title">
+     <h1>Derk</h1></h1>
+    
+     <a target="_blank" href="" class="white-mode">OTHER PENS</a>
     </div>
 </body>
 </html>
