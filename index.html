@@ -89,118 +89,150 @@
       background: #edf3f8;
       color: #212121;
     }
+
+    .text {
+  text-align: center;
+  margin-top: 80px;
+  color: #fff;
+  font-size: 1.5em;
+  font-family: sans-serif;
+  text-transform: uppercase;
+}
+
+.animated {
+  animation-duration: 3s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+  40% {transform: translateY(-30px);}
+  60% {transform: translateY(-15px);}
+}
+.bounce {
+  animation-name: bounce;
+}
+
+@keyframes flash {
+  0%, 50%, 100% {opacity: 1;}
+  25%, 75% {opacity: 0;}
+}
+.flash {
+  animation-name: flash;
+}
+
+@keyframes pulse {
+  0% {transform: scale(1);}
+  50% {transform: scale(1.1);}
+  100% {transform: scale(1);}
+}
+.pulse {
+  animation-name: pulse;
+  animation-duration: 1s;
+}
+
+@keyframes rubberBand {
+  0% {transform: scale(1);}
+  30% {transform: scaleX(1.25) scaleY(0.75);}
+  40% {transform: scaleX(0.75) scaleY(1.25);}
+  60% {transform: scaleX(1.15) scaleY(0.85);}
+  100% {transform: scale(1);}
+}
+.rubberBand {
+  animation-name: rubberBand;
+}
+
+@keyframes shake {
+  0%, 100% {transform: translateX(0);}
+  10%, 30%, 50%, 70%, 90% {transform: translateX(-10px);}
+  20%, 40%, 60%, 80% {transform: translateX(10px);}
+}
+.shake {
+  animation-name: shake;
+}
+
+@keyframes swing {
+  20% {transform: rotate(15deg);}
+  40% {transform: rotate(-10deg);}
+  60% {transform: rotate(5deg);}
+  80% {transform: rotate(-5deg);}
+  100% {transform: rotate(0deg);}
+}
+.swing {
+  transform-origin: top center;
+  animation-name: swing;
+}
+
+@keyframes wobble {
+  0% {transform: translateX(0%);}
+  15% {transform: translateX(-25%) rotate(-5deg);}
+  30% {transform: translateX(20%) rotate(3deg);}
+  45% {transform: translateX(-15%) rotate(-3deg);}
+  60% {transform: translateX(10%) rotate(2deg);}
+  75% {transform: translateX(-5%) rotate(-1deg);}
+  100% {transform: translateX(0%);}
+}
+.wobble {
+  animation-name: wobble;
+}
+
+@keyframes flip {
+  0% {transform: perspective(400px) translateZ(0) rotateY(0) scale(1);animation-timing-function: ease-out;}
+  40% {transform: perspective(400px) translateZ(150px) rotateY(170deg) scale(1);animation-timing-function: ease-out;}
+  50% {transform: perspective(400px) translateZ(150px) rotateY(190deg) scale(1);animation-timing-function: ease-in;}
+  80% {transform: perspective(400px) translateZ(0) rotateY(360deg) scale(.95);animation-timing-function: ease-in;}
+  100% {transform: perspective(400px) translateZ(0) rotateY(360deg) scale(1);animation-timing-function: ease-in;}
+}
+.animated.flip {
+  backface-visibility: visible;
+  animation-name: flip;
+}
+
+@keyframes lightSpeedIn {
+  0% {transform: translateX(100%) skewX(-30deg);opacity: 0;}
+  60% {transform: translateX(-20%) skewX(30deg);opacity: 1;}
+  80% {transform: translateX(0%) skewX(-15deg);opacity: 1;}
+  100% {transform: translateX(0%) skewX(0deg);opacity: 1;}
+}
+.lightSpeedIn {
+  animation-name: lightSpeedIn;
+  animation-timing-function: ease-out;
+}
+
+@keyframes rollIn {
+  0% {opacity: 0;transform: translateX(-100%) rotate(-120deg);}
+  100% {opacity: 1;transform: translateX(0px) rotate(0deg);}
+}
+.rollIn {
+  animation-name: rollIn;
+}
+
+@keyframes rotateIn {
+  0% {transform-origin: center center;transform: rotate(-200deg);opacity: 0;}
+  100% {transform-origin: center center;transform: rotate(0);opacity: 1;}
+}
+.rotateIn {
+  animation-name: rotateIn;
+}
+
+@keyframes hinge {
+  0% {transform: rotate(0);transform-origin: top left;animation-timing-function: ease-in-out;}
+  20%, 60% {transform: rotate(80deg);transform-origin: top left;animation-timing-function: ease-in-out;}
+  40% {transform: rotate(60deg);transform-origin: top left;animation-timing-function: ease-in-out;}
+  80% {transform: rotate(60deg) translateY(0);transform-origin: top left;animation-timing-function: ease-in-out;}
+  100% {transform: translateY(700px);}
+}
+.hinge {
+  margin: 20px;
+  animation-name: hinge;
+}
   </style>
   
 </head>
 <body>
-  <script>
-    // JavaScript (Babel) code
-    let particles = [];
-    let frequency = 20;
-
-    class Particle {
-      constructor(canvas, options) {
-        this.canvas = canvas;
-        this.x = options.x;
-        this.y = options.y;
-        this.s = (3 + Math.random());
-        this.a = 0;
-        this.w = window.innerWidth;
-        this.h = window.innerHeight;
-        this.radius = 0.5 + Math.random() * 20;
-        this.color = this.radius > 5 ? "#0014EF" : "#0073EF";
-      }
-
-      render() {
-        this.canvas.beginPath();
-        this.canvas.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
-        this.canvas.lineWidth = 2;
-        this.canvas.fillStyle = this.color;
-        this.canvas.fill();
-        this.canvas.closePath();
-      }
-
-      move() {
-        this.x += Math.cos(this.a) * this.s;
-        this.y += Math.sin(this.a) * this.s;
-        this.a += Math.random() * 0.8 - 0.4;
-
-        if (this.x < 0 || this.x > this.w - this.radius || this.y < 0 || this.y > this.h - this.radius) {
-          return false;
-        }
-
-        this.render();
-        return true;
-      }
-    }
-
-    function createCanvas(properties) {
-      let canvas = document.createElement('canvas');
-      canvas.width = properties.width;
-      canvas.height = properties.height;
-      let context = canvas.getContext('2d');
-      return { canvas: canvas, context: context };
-    }
-
-    function writeText(canvas, context, text) {
-      let size = 100;
-      context.font = size + "px ROBOTO";
-      context.fillStyle = "#111111";
-      context.textAlign = "center";
-      let lineheight = 70;
-      let lines = text.split('\n');
-      for (let i = 0; i < lines.length; i++) {
-        context.fillText(lines[i], canvas.width / 2, canvas.height / 2 + lineheight * i - (lineheight * (lines.length - 1)) / 3);
-      }
-    }
-
-    function maskCanvas(c2, c1, c3) {
-      c3.context.drawImage(c2.canvas, 0, 0, c2.canvas.width, c2.canvas.height);
-      c3.context.globalCompositeOperation = 'source-atop';
-      c3.context.drawImage(c1.canvas, 0, 0);
-      blur(c1.context, c1.canvas, 2);
-    }
-
-    function blur(ctx, canvas, amt) {
-      ctx.filter = `blur(${amt}px)`;
-      ctx.drawImage(canvas, 0, 0);
-      ctx.filter = 'none';
-    }
-
-    function popolate(canvas) {
-      particles.push(new Particle(canvas, { x: window.innerWidth / 2, y: window.innerHeight / 2 }));
-    }
-
-    function clear(canvas, tela) {
-      canvas.globalAlpha = 0.03;
-      canvas.fillStyle = '#111111';
-      canvas.fillRect(0, 0, tela.width, tela.height);
-      canvas.globalAlpha = 1;
-    }
-
-    function update(c1, c2, c3) {
-      clear(c1.context, c1.canvas);
-      particles = particles.filter(p => p.move());
-      maskCanvas(c2, c1, c3);
-      requestAnimationFrame(() => update(c1, c2, c3));
-    }
-
-    document.addEventListener("DOMContentLoaded", function () {
-      let c1 = createCanvas({ width: window.innerWidth, height: window.innerHeight });
-      let c2 = createCanvas({ width: window.innerWidth, height: window.innerHeight });
-      let c3 = createCanvas({ width: window.innerWidth, height: window.innerHeight });
-
-      document.body.appendChild(c3.canvas);
-      writeText(c2.canvas, c2.context, "Derk\n155155");
-
-      setInterval(() => {
-        popolate(c1.context);
-      }, 20);
-
-      update(c1, c2, c3);
-    });
-  </script>
-  <div class="more-pens">
+  
+  <div class="more-pens text animated flash">
     <!-- Additional content here -->
   </div>
 </body>
