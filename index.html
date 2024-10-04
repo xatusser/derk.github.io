@@ -5,10 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Derk</title>
 
-
   <style>
-    /* SASS convertido a CSS */
-  /* Declarar la fuente Montserrat desde la carpeta local */
+    /* Declarar la fuente Montserrat desde la carpeta local */
     @font-face {
       font-family: 'Montserrat';
       src: url('static/fonts/Montserrat-Regular.ttf') format('truetype');
@@ -27,7 +25,7 @@
       font-weight: 400;
       font-style: italic;
     }
-    
+
     body {
       margin: 0;
       padding: 0;
@@ -35,12 +33,6 @@
       width: 100%;
       height: 100%;
       background: #111111;
-    }
-
-    .krona-one-regular {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 400;
-      font-style: normal;
     }
 
     .title {
@@ -96,21 +88,6 @@
     // JavaScript (Babel) code
     let particles = [];
     let frequency = 20;
-
-    // Populate particles
-    setInterval(function() {
-      popolate();
-    }, frequency);
-
-    let c1 = createCanvas({width: window.innerWidth, height: window.innerHeight});
-    let c2 = createCanvas({width: window.innerWidth, height: window.innerHeight});
-    let c3 = createCanvas({width: window.innerWidth, height: window.innerHeight});
-
-    let tela = c1.canvas;
-    let canvas = c1.context;
-
-    document.body.appendChild(c3.canvas);
-    writeText(c2.canvas, c2.context, "Derk\n155155");
 
     class Particle {
       constructor(canvas, options) {
@@ -168,7 +145,7 @@
       }
     }
 
-    function maskCanvas() {
+    function maskCanvas(c2, c1, c3) {
       c3.context.drawImage(c2.canvas, 0, 0, c2.canvas.width, c2.canvas.height);
       c3.context.globalCompositeOperation = 'source-atop';
       c3.context.drawImage(c1.canvas, 0, 0);
@@ -181,33 +158,43 @@
       ctx.filter = 'none';
     }
 
-    function popolate() {
-      particles.push(new Particle(canvas, {x: window.innerWidth / 2, y: window.innerHeight / 2}));
+    function popolate(canvas) {
+      particles.push(new Particle(canvas, { x: window.innerWidth / 2, y: window.innerHeight / 2 }));
     }
 
-    function clear() {
+    function clear(canvas, tela) {
       canvas.globalAlpha = 0.03;
       canvas.fillStyle = '#111111';
       canvas.fillRect(0, 0, tela.width, tela.height);
       canvas.globalAlpha = 1;
     }
 
-    function update() {
-      clear();
+    function update(c1, c2, c3) {
+      clear(c1.context, c1.canvas);
       particles = particles.filter(p => p.move());
-      maskCanvas();
-      requestAnimationFrame(update);
+      maskCanvas(c2, c1, c3);
+      requestAnimationFrame(() => update(c1, c2, c3));
     }
 
-    update();
+    document.addEventListener("DOMContentLoaded", function () {
+      let c1 = createCanvas({ width: window.innerWidth, height: window.innerHeight });
+      let c2 = createCanvas({ width: window.innerWidth, height: window.innerHeight });
+      let c3 = createCanvas({ width: window.innerWidth, height: window.innerHeight });
+
+      document.body.appendChild(c3.canvas);
+      writeText(c2.canvas, c2.context, "Derk\n155155");
+
+      setInterval(() => {
+        popolate(c1.context);
+      }, 20);
+
+      update(c1, c2, c3);
+    });
   </script>
 </head>
 <body>
-
   <div class="more-pens">
     <!-- Additional content here -->
   </div>
-
-  
 </body>
 </html>
