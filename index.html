@@ -7,8 +7,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css?family=Cairo');
+
+        .gradient-background {
+          background: linear-gradient(325deg,#164e78,#143a57,#09263c,#041725);
+          background-size: 240% 240%;
+          animation: gradient-animation 12s ease infinite;
+        }
+        
+        @keyframes gradient-animation {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+        
         body {
-            background-color: #010;
             margin: 0; /* Eliminar el margen del body */
             display: flex; /* Utilizar flexbox para centrar */
             align-items: center; /* Centrar verticalmente */
@@ -66,7 +84,7 @@
         }
     </style>
 </head>
-<body>
+<body class="gradient-background">
     <div class="title">
         <h1>Derk</h1>
         <h2>(155155)</h2>
