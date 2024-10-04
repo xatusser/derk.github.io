@@ -23,10 +23,10 @@
             font-family: 'Roboto', sans-serif;
             font-size: 100px; /* Tamaño de la letra */
             position: relative;
-            color: white; /* Color de la letra */
+            color: transparent; /* Color de la letra (transparente para mostrar el fondo) */
             overflow: hidden;
-            text-shadow: 0 0 20px rgba(0, 0, 255, 0.7); /* Sombra azul */
             animation: shadowMove 2s infinite alternate; /* Efecto de luz en la sombra */
+            text-shadow: 0 0 20px rgba(0, 0, 255, 0.7); /* Sombra azul */
         }
 
         .text::before {
@@ -64,7 +64,7 @@
 </head>
 <body>
     <div class="container">
-        <div class="text"></div>
+        <div class="text">Derk</div> <!-- Se agregó el texto aquí -->
         <div class="number">155155</div>
     </div>
 </body>
