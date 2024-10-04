@@ -3,37 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="static/FONTS/Montserrat-Regular.ttf">
-    <link rel="stylesheet" href="static/FONTS/Montserrat-Bold.ttf">
-  <link rel="stylesheet" href="static/FONTS/Montserrat-Italic.ttf">
 
   <title>Derk</title>
 
   <style>
     /* Declarar la fuente Montserrat desde la carpeta local */
-    @font-face {
-      font-family: 'Montserrat';
-      src: url('static/FONTS/Montserrat-Regular.ttf') format('truetype');
-      font-weight: 400;
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+    .montserrat-<uniquifier> {
+      font-family: "Montserrat", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: <weight>;
       font-style: normal;
-      font-display: swap;
-
-    }
-    @font-face {
-      font-family: 'Montserrat';
-      src: url('static/FONTS/Montserrat-Bold.ttf') format('truetype');
-      font-weight: 700;
-      font-style: normal;
-        font-display: swap;
-
-    }
-    @font-face {
-      font-family: 'Montserrat';
-      src: url('static/FONTS/Montserrat-Italic.ttf') format('truetype');
-      font-weight: 400;
-      font-style: italic;
-        font-display: swap;
-
     }
 
     body {
@@ -43,8 +23,7 @@
       width: 100%;
       height: 100%;
       background: #111111;
-        font-family: 'Montserrat' !important;
-        font-display: swap !important;
+        font-family: 'Montserrat';
 
     }
 
