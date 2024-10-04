@@ -24,9 +24,8 @@
             font-size: 100px; /* Tamaño de la letra */
             position: relative;
             color: transparent; /* Color de la letra (transparente para mostrar el fondo) */
-            overflow: hidden;
-            animation: shadowMove 2s infinite alternate; /* Efecto de luz en la sombra */
-            text-shadow: 0 0 20px rgba(0, 0, 255, 0.7); /* Sombra azul */
+            overflow: hidden; /* Oculta el contenido que desborda */
+            text-shadow: 0 0 20px rgba(0, 0, 255, 0.7); /* Sombra azul para "Derk" */
         }
 
         .text::before {
@@ -36,17 +35,17 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('c.jpg') no-repeat center; /* Asegúrate de que esta URL sea correcta */
+            background: url('x.jpg') no-repeat center; /* Asegúrate de que esta URL sea correcta */
             background-size: cover;
-            animation: scroll 10s linear infinite; /* Animación de scroll */
-            -webkit-background-clip: text;
-            background-clip: text;
+            animation: scroll 10s linear infinite; /* Animación de scroll horizontal */
+            -webkit-background-clip: text; /* Clipping del fondo */
+            background-clip: text; /* Clipping del fondo */
             color: transparent; /* Color de la letra en la imagen */
         }
 
         @keyframes scroll {
             0% { background-position: 0 0; }
-            100% { background-position: 0 100%; }
+            100% { background-position: 100% 0; } /* Desplazamiento horizontal */
         }
 
         @keyframes shadowMove {
@@ -59,12 +58,14 @@
             font-size: 50px; /* Tamaño del número */
             margin-top: 20px; /* Espacio entre "Derk" y el número */
             color: #000; /* Color del número */
+            text-shadow: 0 0 20px rgba(0, 0, 255, 0.7); /* Sombra azul para el número */
+            animation: shadowMove 2s infinite alternate; /* Efecto de sombra en el número */
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="text">Derk</div> <!-- Se agregó el texto aquí -->
+        <div class="text"></div> <!-- Aquí se genera el texto "Derk" -->
         <div class="number">155155</div>
     </div>
 </body>
